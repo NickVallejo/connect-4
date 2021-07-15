@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #242422;
+}
+
+.c4-board {
+  background: #242422;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.player-header {
+  text-align: right;
+  padding: 10px 40px;
+}
+
+.player-header span {
+  color: #f9f9f9;
+  font-weight: 300;
+}
+
+.player-header span .points-header {
+  color: #9c528b;
+  font-weight: 600;
+}
+
+[class^="row-"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+[class^="circ-"] {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin: 10px;
+  background-color: #38423b;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.dash-l {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+}
+
+.dash-r {
+  background: #1a1a18;
+  height: 100%;
+  width: 500px;
+  overflow: hidden;
+}
+
+.auth-wrap {
+  text-align: center;
+}
+
+.noauth-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 100%;
+  padding: 50px;
+  color: #f9f9f9;
+  overflow: hidden;
+}
+
+.noauth-wrap .noauth-title {
+  font-size: 95px;
+  font-weight: 700;
+  line-height: 98px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.noauth-wrap .log-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.noauth-sub {
+  font-weight: 300;
+}
+
+input[type="text"] {
+  border: none;
+  background: #2e2e2c;
+  padding: 12px 10px;
+  color: #f9f9f9;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  width: 65%;
+  font-weight: 300;
+}
+
+.pickUserBtn {
+  background: #9c528b;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: #f9f9f9;
+  border: none;
+  padding: 11px 15px;
+  font-weight: 300;
+}
+
+.dash-art {
+  max-width: 250px;
+  position: absolute;
+  bottom: -50px;
+  left: -25px;
+  opacity: 0.7;
+}
+
+.destroy {
+  background: red;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 4px 10px;
+}
+
+.btn-group {
+  margin-top: 50px;
+}
+
+.js-points {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */

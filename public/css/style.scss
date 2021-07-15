@@ -1,0 +1,148 @@
+$black: #242422;
+$dark: #353831;
+$light: #38423b;
+$purp: #9c528b;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;700&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: $black;
+}
+
+.c4-board {
+  background: $black;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.player-header {
+  text-align: right;
+  padding: 10px 40px;
+  span {
+    color: #f9f9f9;
+    font-weight: 300;
+    .points-header {
+      color: $purp;
+      font-weight: 600;
+    }
+  }
+}
+
+[class^="row-"] {
+  display: flex;
+}
+
+[class^="circ-"] {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin: 10px;
+  background-color: $light;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.dash-l {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.dash-r {
+  background: darken($black, 4%);
+  height: 100%;
+  width: 500px;
+  overflow: hidden;
+}
+
+.auth-wrap {
+  text-align: center;
+}
+
+.noauth-wrap {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding: 50px;
+  color: #f9f9f9;
+  overflow: hidden;
+  .noauth-title {
+    font-size: 95px;
+    font-weight: 700;
+    line-height: 98px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+
+  .log-wrap {
+    display: flex;
+  }
+}
+.noauth-sub {
+  font-weight: 300;
+}
+
+input[type="text"] {
+  border: none;
+  background: lighten($black, 4%);
+  padding: 12px 10px;
+  color: #f9f9f9;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  width: 65%;
+  font-weight: 300;
+}
+
+.pickUserBtn {
+  background: #9c528b;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: #f9f9f9;
+  border: none;
+  padding: 11px 15px;
+  font-weight: 300;
+}
+
+.dash-art {
+  max-width: 250px;
+  position: absolute;
+  bottom: -50px;
+  left: -25px;
+  opacity: 0.7;
+}
+
+.destroy {
+  background: red;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 4px 10px;
+}
+
+.btn-group {
+  margin-top: 50px;
+}
+
+.js-points {
+  display: none;
+}

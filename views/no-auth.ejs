@@ -1,0 +1,21 @@
+<div class="noauth-wrap">
+    <div class="noauth-top">
+        <h2 class="noauth-title">First Time?</h2>
+        <h4 class="noauth-sub">Pick a username to start playing</h4> 
+    </div>
+
+
+    <div class="log-wrap">
+        <input name="user" placeholder="Pick a username..." type="text">
+        <button class="pickUserBtn">Submit</button>
+    </div>
+</div>
+
+<div class="auth-wrap">
+    <canvas id="player-points" width="200" height="200" value="<%- userInfo.points %>"></canvas>
+    <div class="btn-group">
+        <button>Find a Game</button>
+        <button>Invite a Friend</button>
+        <a class="destroy" href="/destroy">Destroy Session</a>
+    </div>
+</div>
