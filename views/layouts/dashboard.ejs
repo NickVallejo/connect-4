@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<% const user=userInfo ? userInfo.username + ":" : '' ; const points=user ? userInfo.points + ' Points' : '' %>
+
+    <body>
+        <section class="dash-r">
+            <%- body %>
+                <img class="dash-art" src="images/c4-art.png" alt="">
+                <button class="cheat" onclick=playerWin(true)>Win</button>
+                <button class="cheat" onclick=playerWin(false)>Lose</button>
+        </section>
+
+        <section class="dash-l">
+            <div class="player-header">
+                <span class="js-points">
+                    <%- userInfo.points %>
+                </span>
+                <span class="user-header">
+                    <%- user %> <span class="points-header">
+                            <%- points %>
+                        </span>
+                </span>
+            </div>
+            <div class="c4-board">
+                <div class="row-0">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+                <div class="row-1">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+                <div class="row-2">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+                <div class="row-3">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+                <div class="row-4">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+                <div class="row-5">
+                    <div class="circ-0"></div>
+                    <div class="circ-1"></div>
+                    <div class="circ-2"></div>
+                    <div class="circ-3"></div>
+                    <div class="circ-4"></div>
+                    <div class="circ-5"></div>
+                    <div class="circ-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"
+            integrity="sha256-GMN9UIJeUeOsn/Uq4xDheGItEeSpI5Hcfp/63GclDZk=" crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+        <script src="js/c4.js"></script>
+
+        <% if(userInfo){ %>
+            <script>
+                pointSetter(<%= userInfo.points %>, <%= userInfo.xpGoal %>, true);
+            </script>
+            <% } else{ %>
+                <script>
+                    pointSetter(0, 100, false);
+                </script>
+                <% } %>
+    </body>
+
+</html>
