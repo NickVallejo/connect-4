@@ -1,3 +1,4 @@
+ 
 const pickUserField = document.querySelector('.log-wrap input[type="text"]')
 const pickUserSubmit = document.querySelector('.log-wrap .pickUserBtn')
 const xp = document.getElementById('player-points').getContext('2d')
@@ -6,11 +7,29 @@ const userHeader = document.querySelector('.user-header')
 const pointHeader = document.querySelector('.points-header')
 const ctXp = document.querySelector('.ct-xp')
 const ctGoal = document.querySelector('.ct-goal')
+const invBtn = document.querySelectorAll('.inv-btn')
+const invLink = document.querySelector('.inv-link')
 let myXp
+
+invBtn.forEach(btn => {
+    btn.addEventListener('click', createInvite)
+})
+const socket = io("http://localhost:3100/")
 
 //event listener for username submission button
 if (pickUserSubmit) {
     pickUserSubmit.addEventListener('click', submitUser)
+}
+
+function createInvite(){
+    console.log('ping!')
+    const req = new XMLHttpRequest()
+    req.open('GET', '/api/new-room')
+    req.onload = () => {
+        const res = JSON.parse(req.responseText)
+        invLink.innerHTML = `<a href="http://localhost:3200/${res.roomUrl}">http://localhost:3200/${res.roomUrl}</a>`
+    }
+    req.send()
 }
 
 //Submits username to db: returns err if err, fires newUserInit if a succ
@@ -37,6 +56,8 @@ function submitUser() {
     }
     post.send(JSON.stringify({ username: pickUserField.value }))
 }
+
+
 
 //returns a notice 
 function notice() {

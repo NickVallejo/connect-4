@@ -5,9 +5,15 @@ const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const MongoStore = require("connect-mongo")
 const { Session } = require("express-session")
+const { uuid } = require('uuidv4');
 const app = express()
+const port = 3200
 
-const port = 3100
+const io = require("socket.io")(3100, {
+  cors: {
+    origin: ["http://localhost:3200"]
+  }
+})
 
 //middleware & view engine setup
 app.use(expressLayouts)
@@ -15,6 +21,10 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+io.on("connection", socket => {
+  console.log('Socket connection made:', socket.id)
+})
 
 const db_connect = mongoose.createConnection(
   'mongodb+srv://nicovallejo:weareborg@cluster0.p0vwz.azure.mongodb.net/connect-4?retryWrites=true&w=majority',
@@ -28,6 +38,7 @@ const db_connect = mongoose.createConnection(
   })
 
 const Player = db_connect.model('Players', require('./models/player'), "players")
+const Room = db_connect.model('Rooms', require('./models/room'), "rooms")
 
 //! CREATES A STORAGE COLLECTION FOR SESSIONS USING THE DATABASE CONNECTION ESTABLISHED ABOVE
 const sessionStore = MongoStore.create({
@@ -65,7 +76,6 @@ app.get('/', (req, res) => {
   const dashView = req.session.userId ? 'auth' : 'no-auth'
   const userInfo = req.session.userId ? req.session.userInfo : false
   console.log(req.session.userInfo)
-  console.log(dashView)
   res.render(dashView, { userInfo: userInfo, layout: './layouts/dashboard' })
   // console.log(req.session.userId)
 })
@@ -88,6 +98,27 @@ app.post('/api/username', async (req, res) => {
       req.session.userInfo = { username: newUser.username, points: newUser.points, xpGoal: 100 }
       res.send({ type: 'succ', msg: 'Username set.', user: req.session.userInfo })
     });
+  }
+})
+
+app.get('/api/new-room', async (req, res) => {
+  try{
+    const player = await Player.findById(req.session.userId)
+    if(!player){return}
+    const roomFound = await Room.findOne({inviteUser: player._id})
+    if(roomFound){
+      await roomFound.remove()
+    }
+
+    const room = new Room({
+      roomUrl: uuid(),
+      inviteUser: player._id
+    })
+    room.save(() => {
+      res.send(room)
+    })
+  } catch(err){
+    throw err;
   }
 })
 
@@ -119,6 +150,17 @@ app.post('/api/win', async (req, res) => {
     }
   } catch (err) {
     throw err;
+  }
+})
+
+app.get('/:room', async (req, res) => {
+  try{
+    const {room} = req.params
+    const roomFound = await Room.findOne({roomUrl: room})
+    if(!roomFound){res.send('404'); return}
+    res.render('auth-vs', { userInfo: req.session.userInfo, layout: './layouts/dashboard' })
+  } catch(err){
+    throw err
   }
 })
 

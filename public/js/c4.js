@@ -154,7 +154,7 @@ function checkWin(player, color) {
                 alert(`${color} Player Wins!`)
                 console.log('color ' + color)
                 if (color == 'red') {
-                    playerWin()
+                    playerWin(true)
                 }
                 newGame()
                 return
